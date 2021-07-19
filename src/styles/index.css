@@ -114,6 +114,12 @@
 .form-group input {
   padding: 0.5rem 1rem;
   border: 1px solid var(--primary);
+
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus-visible {
+  box-shadow: 0 12px 24px rgb(0 0 0 / 10%);
 }
 
 .radio-input {
@@ -257,6 +263,15 @@
     flex-direction: row;
   }
 
+  .info-container h5 {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .info-container p {
+    font-size: 14px;
+  }
+
   .image-container  {
     padding: 0;
   }
@@ -265,7 +280,7 @@
     width: 100%;
   }
 
-  .share-form>div {
+  .share-form>div:first-child {
     flex-direction: column;
     gap: 0;
   }

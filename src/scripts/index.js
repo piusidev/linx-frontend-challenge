@@ -1,5 +1,5 @@
 import { getContent } from "./api.js";
-import { formatMoney } from "./helpers.js"; 
+import { formatMoney, notify, resetFields } from "./helpers.js"; 
 
 const listProducts = async (page) => {
   const content = await getContent(page);
@@ -28,7 +28,7 @@ const listProducts = async (page) => {
 }
 
 const moreProducts = async () => {
-  const button = document.getElementById("more-products");
+  const button = document.getElementById('more-products');
   let page = button.getAttribute('data-page');
   page = parseInt(page);
   button.setAttribute('data-page', ++page);
@@ -36,7 +36,49 @@ const moreProducts = async () => {
   listProducts(page);
 }
 
+const sendForm = () => {
+  let error = 0;
+  
+  const name = document.getElementById('name');
+  const email = document.getElementById('email');
+  const doc = document.getElementById('doc');
+  let gender = document.getElementsByName('gender');
+  
+  for(let i = 0; i < gender.length; i++) {
+    if(gender[i].checked) {
+      gender = true;
+    }
+  }
+
+  if(name.value == '') {
+    notify('warning', 'Campos vazios!', 'Informe seu nome');
+    name.focus();
+    return
+  }
+
+  if(email.value == '') {
+    notify('warning', 'Campos vazios!', 'Informe seu email');
+    email.focus();
+    return
+  }
+
+  if(doc.value == '') {
+    notify('warning', 'Campos vazios!', 'Informe seu CPF');
+    doc.focus();
+    return
+  }
+
+  if(gender !== true) {
+    notify('warning', 'Campos vazios!', 'Informe seu genero');
+    return
+  }
+
+  notify('success', 'Sucesso!', 'Obrigado por contribuir com o algorítimo');
+  resetFields();
+}
+
 window.moreProducts = moreProducts;
+window.sendForm = sendForm;
 
 window.onload = () => {
   listProducts();

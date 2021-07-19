@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 
 :root {
@@ -20,7 +21,6 @@ a, button {
 }
 
 button {
-  outline: none;
   border: none;
 }
 
@@ -72,4 +72,39 @@ button {
   width: 100%;
   height: 1px;
   background: var(--primary);
+}
+
+.notify {
+  width: fit-content;
+  color: var(--white);
+
+  border-radius: 0.5rem;
+
+  padding: 1rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+
+  animation: notify .5s;
+}
+
+.notify span {
+  font-weight: 800;
+}
+
+@keyframes notify {
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+
+  to {
+    right: 2rem;
+    opacity: 1;
+  }
 }
