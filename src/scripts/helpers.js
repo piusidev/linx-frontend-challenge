@@ -54,3 +54,9 @@ export const notify = (type, title, message) => {
     document.querySelector("body").removeChild(div);
   }, 2000);
 }
+
+export const validateEmail = (email) => {
+  const re = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+  
+  return re.test(email);
+}

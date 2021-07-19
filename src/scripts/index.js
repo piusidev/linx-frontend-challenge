@@ -1,9 +1,9 @@
 import { getContent } from "./api.js";
-import { formatMoney, notify, resetFields } from "./helpers.js"; 
+import { formatMoney, notify, resetFields, validateEmail } from "./helpers.js"; 
 
 const listProducts = async (page) => {
   const content = await getContent(page);
-  const products = content.products
+  const products = content.products;
   
   products.forEach(element => {
     const card = `
@@ -36,6 +36,14 @@ const moreProducts = async () => {
   listProducts(page);
 }
 
+const collapse = () => {
+  const content = document.getElementById('content');
+  const arrow = document.getElementById('arrow');
+
+  content.classList.toggle('collapse');
+  arrow.classList.toggle('spin');
+}
+
 const sendForm = () => {
   const name = document.getElementById('name');
   const email = document.getElementById('email');
@@ -56,6 +64,10 @@ const sendForm = () => {
 
   if(email.value == '') {
     notify('warning', 'Campos vazios!', 'Informe seu email');
+    email.focus();
+    return
+  }else if(validateEmail(email.value) !== true ) {
+    notify('warning', 'Campos vazios!', 'Informe um email válido');
     email.focus();
     return
   }
@@ -89,6 +101,10 @@ const friendShare = () => {
     notify('warning', 'Campos vazios!', 'Informe um email');
     email.focus();
     return
+  }else if(validateEmail(email.value) !== true ) {
+    notify('warning', 'Campos vazios!', 'Informe um email válido');
+    email.focus();
+    return
   }
 
   notify('success', 'Sucesso!', `Lista enviada para o(a) ${name.value}`);
@@ -96,6 +112,7 @@ const friendShare = () => {
 }
 
 window.moreProducts = moreProducts;
+window.collapse = collapse;
 window.sendForm = sendForm;
 window.friendShare = friendShare;
 

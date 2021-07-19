@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   outline: none;
+  text-decoration: none;
 }
 
 :root {
@@ -94,6 +95,52 @@ button {
 }
 
 .notify span {
+  font-weight: 800;
+}
+
+/* Procuts cards */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.image-container {
+  width: 100%;
+  padding: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--primary);
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info-container h5 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.info-container p {
+  font-size: 16px;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.price span:nth-child(2) {
+  font-size: 18px;
   font-weight: 800;
 }
 
