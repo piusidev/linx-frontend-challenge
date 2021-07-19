@@ -1,4 +1,5 @@
 import { getContent } from "./api.js";
+import { formatMoney } from "./helpers.js"; 
 
 const listProducts = async (page) => {
   const content = await getContent(page);
@@ -13,9 +14,9 @@ const listProducts = async (page) => {
         <h5>${element.name}</h5>
         <p>${element.description}</p>
         <div class="price">
-          <span>De:</span>
-          <span>Por: R$19,99</span>
-          <span>ou ${element.installments.count} de R$9,99</span>
+          <span>De: R$${formatMoney(element.oldPrice)}</span>
+          <span>Por: R$${formatMoney(element.price)}</span>
+          <span>ou ${element.installments.count}x de R$${formatMoney(element.installments.value)}</span>
         </div>
         <button class="button">Comprar</button>
       </div>

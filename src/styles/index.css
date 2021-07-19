@@ -100,6 +100,7 @@
 }
 
 .form-group {
+  width: 100%;
   display: flex;
   flex-direction: column;
 
@@ -121,24 +122,6 @@
   align-items: center;
 
   margin-bottom: 1.5rem;
-}
-
-.button {
-  width: 100%;
-  color: var(--text);
-  font-size: 16px;
-
-  background: none;
-  border: 1px solid var(--primary);
-  border-radius: 4px;
-  padding: 0.7rem 1rem;
-
-  transition: all 0.3s ease;
-}
-
-.button:hover {
-  background: var(--text);
-  color: var(--white);
 }
 
 /* Products Section */
@@ -195,6 +178,48 @@
   font-weight: 800;
 }
 
+/* Share section */
+
+.share {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.share-form {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  margin: 2rem 0;
+}
+
+.share-form>div:first-child {
+  width: 100%;
+  display: flex;
+  gap: 4rem;
+  margin-bottom: 2rem;
+}
+
+/* Footer */
+
+.footer {
+  background: var(--primary);
+  color: var(--white);
+
+  font-size: 14px;
+
+  padding: 4rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
 @media (max-width: 900px) {
   .products {
     grid-template-columns: 1fr 1fr 1fr;
@@ -216,5 +241,14 @@
 
   .image-container  {
     padding: 0;
+  }
+
+  .share-form {
+    width: 100%;
+  }
+
+  .share-form>div {
+    flex-direction: column;
+    gap: 0;
   }
 }
