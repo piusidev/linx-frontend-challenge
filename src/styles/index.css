@@ -100,6 +100,7 @@
 }
 
 .expand img {
+  display: none;
   cursor: pointer;
   transition: transform  0.3s ease-in-out;
 }
@@ -240,6 +241,10 @@
   
   .algorithm {
     grid-template-columns: 1fr;
+  }
+
+  .expand img {
+    display: block;
   }
 
   .products {
