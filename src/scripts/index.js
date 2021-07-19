@@ -11,14 +11,16 @@ const listProducts = async (page) => {
         <div class="image-container">
           <img src="http://${element.image}">
         </div>
-        <h5>${element.name}</h5>
-        <p>${element.description}</p>
-        <div class="price">
-          <span>De: R$${formatMoney(element.oldPrice)}</span>
-          <span>Por: R$${formatMoney(element.price)}</span>
-          <span>ou ${element.installments.count}x de R$${formatMoney(element.installments.value)}</span>
+        <div class="info-container">
+          <h5>${element.name}</h5>
+          <p>${element.description}</p>
+          <div class="price">
+            <span>De: R$${formatMoney(element.oldPrice)}</span>
+            <span>Por: R$${formatMoney(element.price)}</span>
+            <span>ou ${element.installments.count}x de R$${formatMoney(element.installments.value)}</span>
+          </div>
+          <button class="button">Comprar</button>
         </div>
-        <button class="button">Comprar</button>
       </div>
     `
     document.getElementById('products').innerHTML += card;
