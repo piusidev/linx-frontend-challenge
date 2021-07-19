@@ -37,8 +37,6 @@ const moreProducts = async () => {
 }
 
 const sendForm = () => {
-  let error = 0;
-  
   const name = document.getElementById('name');
   const email = document.getElementById('email');
   const doc = document.getElementById('doc');
@@ -77,8 +75,29 @@ const sendForm = () => {
   resetFields();
 }
 
+const friendShare = () => {
+  const name = document.getElementById('friend-name');
+  const email = document.getElementById('friend-email');
+
+  if(name.value == '') {
+    notify('warning', 'Campos vazios!', 'Informe um nome');
+    name.focus();
+    return
+  }
+
+  if(email.value == '') {
+    notify('warning', 'Campos vazios!', 'Informe um email');
+    email.focus();
+    return
+  }
+
+  notify('success', 'Sucesso!', `Lista enviada para o(a) ${name.value}`);
+  resetFields();
+}
+
 window.moreProducts = moreProducts;
 window.sendForm = sendForm;
+window.friendShare = friendShare;
 
 window.onload = () => {
   listProducts();
