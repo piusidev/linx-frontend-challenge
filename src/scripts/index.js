@@ -24,6 +24,17 @@ const listProducts = async (page) => {
   });
 }
 
+const moreProducts = async () => {
+  const button = document.getElementById("more-products");
+  let page = button.getAttribute('data-page');
+  page = parseInt(page);
+  button.setAttribute('data-page', ++page);
+
+  listProducts(page);
+}
+
+window.moreProducts = moreProducts;
+
 window.onload = () => {
   listProducts();
 };
