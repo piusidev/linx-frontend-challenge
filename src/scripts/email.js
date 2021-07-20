@@ -1,6 +1,7 @@
 import { getContent } from "./api.js";
 import { formatMoney } from "./helpers.js"; 
 
+//Listing only two elements of array
 const listEmailProducts = async (page) => {
   const content = await getContent(page);
   const products = content.products;

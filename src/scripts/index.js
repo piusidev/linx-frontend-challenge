@@ -1,10 +1,13 @@
 import { getContent } from "./api.js";
 import { formatMoney, notify, resetFields, validateEmail } from "./helpers.js"; 
 
+
+//The received param is the next page of API
 const listProducts = async (page) => {
   const content = await getContent(page);
   const products = content.products;
   
+  //Create a card for each element in array
   products.forEach(element => {
     const card = `
       <div class="card" id="${element.id}">
@@ -27,6 +30,8 @@ const listProducts = async (page) => {
   });
 }
 
+//Get the button prop, increased +1 and call
+//the function that list products with new page
 const moreProducts = async () => {
   const button = document.getElementById('more-products');
   let page = button.getAttribute('data-page');
@@ -44,6 +49,7 @@ const collapse = () => {
   arrow.classList.toggle('spin');
 }
 
+//Check all inputs and notify if empty, else, send data
 const sendForm = () => {
   const name = document.getElementById('name');
   const email = document.getElementById('email');
@@ -87,6 +93,7 @@ const sendForm = () => {
   resetFields();
 }
 
+//Check all inputs and notify if empty, else, send data
 const friendShare = () => {
   const name = document.getElementById('friend-name');
   const email = document.getElementById('friend-email');
@@ -111,6 +118,7 @@ const friendShare = () => {
   resetFields();
 }
 
+//expose functions for global scope
 window.moreProducts = moreProducts;
 window.collapse = collapse;
 window.sendForm = sendForm;

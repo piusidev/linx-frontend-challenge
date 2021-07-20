@@ -1,5 +1,5 @@
+//Receive value and format to Brazil money
 export const formatMoney = (value) => {
-
   if(typeof(value) != 'string') {
     value = value.toFixed(2);
     value = value.toString();
@@ -15,6 +15,7 @@ export const formatMoney = (value) => {
   return getMoney;
 }
 
+//Find all inputs in the page and clean value
 export const resetFields = () => {
   const fields = document.querySelectorAll('input, input[type=radio], select');
 
@@ -24,6 +25,8 @@ export const resetFields = () => {
   }
 }
 
+//Receive the type, title and message of notification,
+//returning a custom notify component
 export const notify = (type, title, message) => {
   let color = '';
 
@@ -55,6 +58,7 @@ export const notify = (type, title, message) => {
   }, 2000);
 }
 
+//Regex for verify if email have a valid format
 export const validateEmail = (email) => {
   const re = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/;
   
